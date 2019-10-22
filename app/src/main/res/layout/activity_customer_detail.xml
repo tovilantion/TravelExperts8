@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerDetail">
+    tools:context=".ui.customer.CustomerDetail">
 
     <LinearLayout
-        android:layout_width="189dp"
-        android:layout_height="584dp"
+        android:layout_width="185dp"
+        android:layout_height="563dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical"
@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textSize="16sp" />
+            android:paddingBottom="14dp"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustFirstName"
@@ -30,8 +31,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustLastName"
@@ -39,8 +41,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustAddress"
@@ -48,8 +51,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustCity"
@@ -57,8 +61,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustProv"
@@ -66,8 +71,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustPostal"
@@ -75,8 +81,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustCountry"
@@ -84,8 +91,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustHomePhone"
@@ -93,8 +101,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustBusPhone"
@@ -102,8 +111,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/etCustEmail"
@@ -111,17 +121,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:paddingBottom="14dp"
             android:text="Name"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/etAgentId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -245,15 +247,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="40dp" />
 
-        <TextView
-            android:id="@+id/textView3z11"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_weight="1"
-            android:text="Agent Id"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
     </LinearLayout>
 
     <Button

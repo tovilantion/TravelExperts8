@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.vlantion.travelexperts8.ui.gallery.GalleryFragment"
+        android:name="com.vlantion.travelexperts8.ui.customer.CustomerFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/activity_customer" />
 
     <fragment
         android:id="@+id/nav_slideshow"

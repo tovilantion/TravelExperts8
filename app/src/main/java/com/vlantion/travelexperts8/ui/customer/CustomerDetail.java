@@ -1,4 +1,4 @@
-package com.vlantion.travelexperts8;
+package com.vlantion.travelexperts8.ui.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.vlantion.travelexperts8.Customer.Customer;
 import com.vlantion.travelexperts8.Customer.CustomerDB;
+import com.vlantion.travelexperts8.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +25,7 @@ import java.net.URL;
 public class CustomerDetail extends AppCompatActivity {
     EditText etCustomerId, etCustFirstName, etCustLastName, etCustAddress,
         etCustCity, etCustProv, etCustPostal, etCustCountry, etCustHomePhone,
-        etCustBusPhone, etCustEmail, etAgentId;
+        etCustBusPhone, etCustEmail;
     Customer customer;
     Button btnCustEdit, btnCustSave;
 
@@ -46,10 +47,19 @@ public class CustomerDetail extends AppCompatActivity {
         etCustHomePhone = findViewById(R.id.etCustHomePhone);
         etCustBusPhone = findViewById(R.id.etCustBusPhone);
         etCustEmail = findViewById(R.id.etCustEmail);
-        etAgentId = findViewById(R.id.etAgentId);
 
         customer = (Customer) getIntent().getSerializableExtra(("customer"));
         etCustomerId.setText(customer.getCustomerId() + "");
+        etCustFirstName.setText(customer.getCustFirstName());
+        etCustLastName.setText(customer.getCustLastName());
+        etCustAddress.setText(customer.getCustAddress());
+        etCustCity.setText(customer.getCustCity());
+        etCustProv.setText(customer.getCustProv());
+        etCustPostal.setText(customer.getCustPostal());
+        etCustCountry.setText(customer.getCustCountry());
+        etCustHomePhone.setText(customer.getCustHomePhone());
+        etCustBusPhone.setText(customer.getCustBusPhone());
+        etCustEmail.setText(customer.getCustEmail());
 
     }
 

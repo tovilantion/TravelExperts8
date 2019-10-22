@@ -1,4 +1,4 @@
-package com.vlantion.travelexperts8.ui.gallery;
+package com.vlantion.travelexperts8.ui.customer;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -19,7 +19,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.vlantion.travelexperts8.Customer.Customer;
-import com.vlantion.travelexperts8.CustomerDetail;
 import com.vlantion.travelexperts8.R;
 
 import org.json.JSONArray;
@@ -34,25 +33,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
-
-public class GalleryFragment extends Fragment {
+public class CustomerFragment extends Fragment {
     ListView lvCustomers;
-    private GalleryViewModel galleryViewModel;
+    private CustomerViewModel customerViewModel;
     View myView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.fragment_gallery, container, false);
+        myView = inflater.inflate(R.layout.activity_customer, container, false);
         lvCustomers = myView.findViewById(R.id.lvCustomer);
 
         new getCustomers().execute("http://10.0.2.2:8080/Workshop(3)/rs/customer/getallcustomers");
 
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+        customerViewModel =
+                ViewModelProviders.of(this).get(CustomerViewModel.class);
 
         final TextView textView = myView.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
+        customerViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

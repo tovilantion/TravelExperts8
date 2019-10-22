@@ -16,8 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerDetail"
-            android:parentActivityName=".CustomerDetail"></activity>
+        <activity android:name=".ui.customer.CustomerDetail"
+            android:parentActivityName=".ui.customer.CustomerDetail"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
