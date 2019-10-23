@@ -70,6 +70,16 @@ public class CustomerDetail extends AppCompatActivity {
          * 			String custEmail, int agentId) {
          * */
 
+
+
+        //Test postCustomers
+//        new postCustomer().execute("143", "2", "BIC", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "AB");
+
+
+    } // end oncreate
+
+    public void btnSaveClick(View v)
+    {
         new postCustomer().execute(
                 etCustomerId.getText().toString(),
                 etAgentId.getText().toString(),
@@ -84,15 +94,6 @@ public class CustomerDetail extends AppCompatActivity {
                 etCustPostal.getText().toString(),
                 etCustProv.getText().toString()
         );
-
-        //Test postCustomers
-//        new postCustomer().execute("143", "2", "BIC", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "AB");
-
-
-    } // end oncreate
-
-    public void btnSaveClick(View v)
-    {
         Toast.makeText(this, "Customer " + etCustomerId.getText().toString() + " updated", Toast.LENGTH_LONG).show();
     }
 
