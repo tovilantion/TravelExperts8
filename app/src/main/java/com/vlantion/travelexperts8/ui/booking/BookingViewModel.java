@@ -1,16 +1,16 @@
-package com.vlantion.travelexperts8.ui.slideshow;
+package com.vlantion.travelexperts8.ui.booking;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class BookingViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public BookingViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("Bookings");
     }
 
     public LiveData<String> getText() {

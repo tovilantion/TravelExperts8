@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.vlantion.travelexperts8.Customer.Customer;
-import com.vlantion.travelexperts8.Customer.CustomerDB;
 import com.vlantion.travelexperts8.R;
 
 import org.json.JSONException;
@@ -170,8 +169,52 @@ public class CustomerDetail extends AppCompatActivity {
 
     }//end postCustomer
 
+    public class deleteCustomer extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected void onPostExecute(String result){
+            //Do something after
+            Log.d("Result: ", result);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String status = "Fail";
+
+            try {
+
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/customer/deletecustomer/" + params[0]); //param[0] is bookingId
+                Log.d("URL:", url.toString());
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("DELETE");
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                // conn.setRequestProperty("Accept","application/json");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+
+                Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                Log.i("MSG", conn.getResponseMessage());
+
+                if (conn.getResponseCode() == 200){
+                    status = "Success";
+                }else{
+                    status = "Fail";
+                }
+                conn.disconnect();
+            } catch (
+                    ProtocolException ex) {
+                ex.printStackTrace();
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+            return status;
+        }
+    }//end deleteCustomer
 
 }
 
 
-//Test postCustomers
+
