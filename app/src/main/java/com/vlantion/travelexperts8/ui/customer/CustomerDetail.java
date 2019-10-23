@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.vlantion.travelexperts8.Customer.Customer;
 import com.vlantion.travelexperts8.Customer.CustomerDB;
@@ -25,11 +27,9 @@ import java.net.URL;
 public class CustomerDetail extends AppCompatActivity {
     EditText etCustomerId, etCustFirstName, etCustLastName, etCustAddress,
         etCustCity, etCustProv, etCustPostal, etCustCountry, etCustHomePhone,
-        etCustBusPhone, etCustEmail;
+        etCustBusPhone, etCustEmail, etAgentId;
     Customer customer;
     Button btnCustEdit, btnCustSave;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class CustomerDetail extends AppCompatActivity {
         etCustHomePhone = findViewById(R.id.etCustHomePhone);
         etCustBusPhone = findViewById(R.id.etCustBusPhone);
         etCustEmail = findViewById(R.id.etCustEmail);
+        etAgentId = findViewById(R.id.etAgentId);
 
         customer = (Customer) getIntent().getSerializableExtra(("customer"));
         etCustomerId.setText(customer.getCustomerId() + "");
@@ -60,8 +61,42 @@ public class CustomerDetail extends AppCompatActivity {
         etCustHomePhone.setText(customer.getCustHomePhone());
         etCustBusPhone.setText(customer.getCustBusPhone());
         etCustEmail.setText(customer.getCustEmail());
+        etAgentId.setText(customer.getAgentId() + "");
 
+
+        /**
+         * public Customer(int customerId, String custFirstName, String custLastName, String custAddress, String custCity,
+         * 			String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone,
+         * 			String custEmail, int agentId) {
+         * */
+
+        new postCustomer().execute(
+                etCustomerId.getText().toString(),
+                etAgentId.getText().toString(),
+                etCustAddress.getText().toString(),
+                etCustBusPhone.getText().toString(),
+                etCustCity.getText().toString(),
+                etCustCountry.getText().toString(),
+                etCustEmail.getText().toString(),
+                etCustFirstName.getText().toString(),
+                etCustHomePhone.getText().toString(),
+                etCustLastName.getText().toString(),
+                etCustPostal.getText().toString(),
+                etCustProv.getText().toString()
+        );
+
+        //Test postCustomers
+//        new postCustomer().execute("143", "2", "BIC", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "AB");
+
+
+    } // end oncreate
+
+    public void btnSaveClick(View v)
+    {
+        Toast.makeText(this, "Customer " + etCustomerId.getText().toString() + " updated", Toast.LENGTH_LONG).show();
     }
+
+
 
     //HTTP POST Method
 //http://10.0.2.2:8080/Workshop/rs/customer/postcustomer
@@ -131,5 +166,11 @@ public class CustomerDetail extends AppCompatActivity {
 
             return status;
         }
+
     }//end postCustomer
+
+
 }
+
+
+//Test postCustomers

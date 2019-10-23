@@ -167,4 +167,6 @@ public class CustomerFragment extends Fragment {
             super.onPostExecute(result);
         }
     }
+
+
 }
