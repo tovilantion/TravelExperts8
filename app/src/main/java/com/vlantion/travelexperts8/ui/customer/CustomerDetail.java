@@ -43,7 +43,7 @@ public class CustomerDetail extends AppCompatActivity {
         etCustCity = findViewById(R.id.etCustCity);
         etCustProv = findViewById(R.id.etCustProv);
         etCustPostal = findViewById(R.id.etCustPostal);
-        etCustCountry = findViewById(R.id.etCustHomePhone);
+        etCustCountry = findViewById(R.id.etCustCountry);
         etCustHomePhone = findViewById(R.id.etCustHomePhone);
         etCustBusPhone = findViewById(R.id.etCustBusPhone);
         etCustEmail = findViewById(R.id.etCustEmail);
@@ -73,7 +73,7 @@ public class CustomerDetail extends AppCompatActivity {
 
 
         //Test postCustomers
-//        new postCustomer().execute("143", "2", "BIC", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "AB");
+//        new postCustomer().execute("143", "2", "Test", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "Darren", "AB");
 
 
     } // end oncreate
