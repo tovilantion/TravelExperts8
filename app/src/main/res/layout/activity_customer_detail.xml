@@ -319,15 +319,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/etCustEdit"
-        android:layout_width="281dp"
-        android:layout_height="50dp"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCustSave"
-        app:layout_constraintVertical_bias="0.111" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
