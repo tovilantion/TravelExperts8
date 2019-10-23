@@ -1,4 +1,4 @@
-package com.vlantion.travelexperts8.ui.customer;
+package com.vlantion.travelexperts8.ui.supplier;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,14 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.vlantion.travelexperts8.Customer.Customer;
 import com.vlantion.travelexperts8.R;
+import com.vlantion.travelexperts8.Supplier.Supplier;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,35 +34,35 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class CustomerFragment extends Fragment {
-    ListView lvCustomers;
-    private CustomerViewModel customerViewModel;
-    View myViewCustomer;
+public class SupplierFragment extends Fragment {
+    ListView lvSuppliers;
+    private SupplierViewModel supplierViewModel;
+    View myViewSupplier;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        myViewCustomer = inflater.inflate(R.layout.fragment_customer, container, false);
-        lvCustomers = myViewCustomer.findViewById(R.id.lvSupplier);
+        myViewSupplier = inflater.inflate(R.layout.fragment_supplier, container, false);
+        lvSuppliers = myViewSupplier.findViewById(R.id.lvSupplier);
 
-        new getCustomers().execute("http://10.0.2.2:8080/Workshop(3)/rs/customer/getallcustomers");
+        new getSuppliers().execute("http://10.0.2.2:8080/Workshop/rs/suppliers/getallsuppliers");
 
-        customerViewModel =
-                ViewModelProviders.of(this).get(CustomerViewModel.class);
+        supplierViewModel =
+                ViewModelProviders.of(this).get(SupplierViewModel.class);
 
-        final TextView textView = myViewCustomer.findViewById(R.id.text_gallery);
-        customerViewModel.getText().observe(this, new Observer<String>() {
+        final TextView textView = myViewSupplier.findViewById(R.id.text_gallery);
+        supplierViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
-        return myViewCustomer;
+        return myViewSupplier;
     }
 
     //HTTP GET METHOD REQUEST
 //http://10.0.2.2:8080/Workshop/rs/customer/getallcustomers
 
-    public class getCustomers extends AsyncTask<String, Void, String> {
+    public class getSuppliers extends AsyncTask<String, Void, String> {
 
         public static final String REQUEST_METHOD = "GET";
         public static final int READ_TIMEOUT = 15000;
@@ -116,45 +117,30 @@ public class CustomerFragment extends Fragment {
         @Override
         protected void onPostExecute(String result){
             try {
-                ArrayList<Customer> listdata = new ArrayList<Customer>();
+                ArrayList<Supplier> listdata = new ArrayList<Supplier>();
 
                 JSONArray customerJsonList = new JSONArray(result);
                 for (int i = 0; i < customerJsonList.length(); i++){
                     JSONObject c = customerJsonList.getJSONObject(i);
-                    int customerId = c.getInt("customerId");
-                    String custFirstName = c.getString("custFirstName");
-                    String custLastName = c.getString("custLastName");
-                    String custAddress = c.getString("custAddress");
-                    String custCity = c.getString("custCity");
-                    String custProv = c.getString("custProv");
-                    String custPostal = c.getString("custPostal");
-                    String custCountry = c.getString("custCountry");
-                    String custHomePhone = c.getString("custHomePhone");
-                    String custBusPhone = c.getString("custBusPhone");
-                    String custEmail = c.getString("custEmail");
-                    int agentId = c.getInt("agentId");
+                    int supplierId = c.getInt("supplierId");
+                    String supName = c.getString("supName");
 
-                    Customer customer = new Customer(customerId, custFirstName,
-                            custLastName, custAddress,
-                            custCity,  custProv,
-                            custPostal,custCountry,
-                            custHomePhone,  custBusPhone,
-                            custEmail, agentId);
 
-                    listdata.add(customer);
-                    Log.d("List data 1: ", listdata.get(0).getCustFirstName());
+                   Supplier supplier = new Supplier(supplierId, supName);
 
-                    ArrayAdapter<Customer> itemsAdapter =
-                            new ArrayAdapter<Customer>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, listdata);
+                    listdata.add(supplier);
 
-                    lvCustomers.setAdapter(itemsAdapter);
+                    ArrayAdapter<Supplier> itemsAdapter =
+                            new ArrayAdapter<Supplier>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, listdata);
+
+                    lvSuppliers.setAdapter(itemsAdapter);
                     //tvCustName.setText(listdata.get(0).getCustFirstName());
 
-                    lvCustomers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    lvSuppliers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(getActivity().getApplicationContext(), CustomerDetail.class);
-                            intent.putExtra("customer", (Customer) lvCustomers.getAdapter().getItem(position));
+                            Intent intent = new Intent(getActivity().getApplicationContext(), SupplierDetail.class);
+                            intent.putExtra("supplier", (Customer) lvSuppliers.getAdapter().getItem(position));
                             startActivity(intent);
                         }
                     });
@@ -167,6 +153,5 @@ public class CustomerFragment extends Fragment {
             super.onPostExecute(result);
         }
     }
-
 
 }
