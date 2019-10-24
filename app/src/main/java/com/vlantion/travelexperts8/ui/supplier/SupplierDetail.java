@@ -55,10 +55,14 @@ public class SupplierDetail extends AppCompatActivity {
                 etSupName.getText().toString()
         );
 
+        Toast.makeText(this, "Supplier " + etSupName.getText().toString() + " updated", Toast.LENGTH_LONG).show();
+
     }
 
     public void btnBookingDeleteClick(View view) {
         new SupplierDetail.deleteSupplier().execute(etSupplierId.getText().toString());
+        Toast.makeText(this, "Supplier " + etSupName.getText().toString() + " deleted", Toast.LENGTH_LONG).show();
+
 
     }
 

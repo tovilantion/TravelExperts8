@@ -18,6 +18,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.booking.BookingDetail"
             android:parentActivityName=".ui.booking.BookingDetail"></activity>
+        <activity android:name=".ui.Package.PackageDetail"
+            android:parentActivityName=".ui.Package.PackageDetail"></activity>
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login">
