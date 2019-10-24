@@ -23,6 +23,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 
 public class BookingDetail extends AppCompatActivity {
     EditText etBookingId, etBookingDate, etBookingNo, etTravelerCount,
@@ -56,7 +57,9 @@ public class BookingDetail extends AppCompatActivity {
             etTravelerCount.setText(booking.getTravelerCount() + "");
             etCustomerId.setText(booking.getCustomerId() + "");
             etTripTypeId.setText(booking.getTripTypeId());
-            etBookingDate.setText(booking.getBookingDate() + "");
+            SimpleDateFormat converter = new SimpleDateFormat("MMM dd, YYYY, HH:mm:ss a");
+            etBookingDate.setText(converter.format(booking.getBookingDate()) + "");
+            Log.d("Parsed Date to String: ", converter.format(booking.getBookingDate()));
             etPackageId.setText(booking.getPackageId() + "");
         }
 
@@ -142,8 +145,55 @@ public class BookingDetail extends AppCompatActivity {
         }
     }
 
+    public class deleteBooking extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected void onPostExecute(String result){
+            //Do something after
+            Log.d("Result: ", result);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String status = "Fail";
+
+            try {
+
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/booking/deletebooking/" + params[0]); //param[0] is bookingId
+                Log.d("URL:", url.toString());
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("DELETE");
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                // conn.setRequestProperty("Accept","application/json");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+
+                Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                Log.i("MSG", conn.getResponseMessage());
+
+                if (conn.getResponseCode() == 200){
+                    status = "Success";
+                }else{
+                    status = "Fail";
+                }
+                conn.disconnect();
+            } catch (
+                    ProtocolException ex) {
+                ex.printStackTrace();
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+            return status;
+        }
+
+
+    }//end deleteBooking
 
     public void btnDeleteBookingClick(View v) {
+       new deleteBooking().execute(etBookingId.getText().toString());
         Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
     }
 } // end booking detail class

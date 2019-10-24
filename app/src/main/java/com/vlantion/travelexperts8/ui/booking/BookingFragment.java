@@ -134,8 +134,17 @@ public class BookingFragment extends Fragment {
                     int customerId = c.getInt("customerId");
                     int packageId = c.getInt("packageId");
                     String tripTypeId = c.getString("tripTypeId");
+
                     //Convert String to Date
-                    Date bookingDate = new SimpleDateFormat("MMM dd, YYYY, HH:mm:ss a").parse(c.getString("bookingDate"));
+                    SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, YYYY, HH:mm:ss a");
+                    Date bookingDate = formatter.parse(c.getString("bookingDate"));
+                    //Date bookingDate = formatter.parse("Mar 5, 2016, 12:00:00 AM");
+
+
+
+
+                    String stringDate = formatter.format(bookingDate);
+                    Log.d("Parsed date to String", stringDate);
 
 
                     Booking booking = new Booking(bookingId, bookingDate, bookingNo, travelerCount, customerId, tripTypeId, packageId);

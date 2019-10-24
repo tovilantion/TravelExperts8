@@ -1,6 +1,7 @@
 package com.vlantion.travelexperts8.Booking;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Booking implements Serializable {
@@ -81,6 +82,6 @@ public class Booking implements Serializable {
 
     @Override
     public String toString(){
-        return this.getBookingId() + " " + this.getBookingDate() + " " + this.getBookingNo();
+        return this.getBookingId() + " " + this.getBookingNo();
     }
 }

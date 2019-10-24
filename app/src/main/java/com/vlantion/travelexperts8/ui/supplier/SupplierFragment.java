@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ public class SupplierFragment extends Fragment {
     ListView lvSuppliers;
     private SupplierViewModel supplierViewModel;
     View myViewSupplier;
+    Button btnAddSupplier;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -218,5 +220,9 @@ public class SupplierFragment extends Fragment {
         }
 
     }//end putSupplier
+
+    public void btnAddSupplierClick(View v){
+
+    }
 
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,10 +28,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -38,6 +41,7 @@ public class CustomerFragment extends Fragment {
     ListView lvCustomers;
     private CustomerViewModel customerViewModel;
     View myViewCustomer;
+    Button btnAdddCustomer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +63,8 @@ public class CustomerFragment extends Fragment {
         });
         return myViewCustomer;
     }
+
+
 
     //HTTP GET METHOD REQUEST
 //http://10.0.2.2:8080/Workshop/rs/customer/getallcustomers
@@ -169,6 +175,8 @@ public class CustomerFragment extends Fragment {
             super.onPostExecute(result);
         }
     }
+
+
 
 
 }

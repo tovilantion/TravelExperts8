@@ -55,8 +55,6 @@ public class SupplierDetail extends AppCompatActivity {
                 etSupName.getText().toString()
         );
 
-
-
     }
 
     public void btnBookingDeleteClick(View view) {

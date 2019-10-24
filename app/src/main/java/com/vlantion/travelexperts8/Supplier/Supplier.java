@@ -30,4 +30,10 @@ public class Supplier implements Serializable {
     public void setSupName(String supName) {
         this.supName = supName;
     }
+
+
+    @Override
+    public String toString(){
+        return this.supplierId + " " + this.supName;
+    }
 }
