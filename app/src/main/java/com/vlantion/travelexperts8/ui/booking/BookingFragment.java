@@ -152,9 +152,8 @@ public class BookingFragment extends Fragment {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Intent intentBooking = new Intent(getActivity().getApplicationContext(), BookingDetail.class);
-                            startActivity(intentBooking);
                             intentBooking.putExtra("booking", (Booking) lvBookings.getAdapter().getItem(position));
-
+                            startActivity(intentBooking);
                         }
                     });
 

@@ -24,7 +24,7 @@ public class Booking implements Serializable {
     }
 
     public int getBookingId() {
-        return bookingId;
+        return this.bookingId;
     }
 
     public void setBookingId(int bookingId) {
@@ -32,7 +32,7 @@ public class Booking implements Serializable {
     }
 
     public Date getBookingDate() {
-        return bookingDate;
+        return this.bookingDate;
     }
 
     public void setBookingDate(Date bookingDate) {
@@ -40,7 +40,7 @@ public class Booking implements Serializable {
     }
 
     public String getBookingNo() {
-        return bookingNo;
+        return this.bookingNo;
     }
 
     public void setBookingNo(String bookingNo) {
@@ -48,7 +48,7 @@ public class Booking implements Serializable {
     }
 
     public int getTravelerCount() {
-        return travelerCount;
+        return this.travelerCount;
     }
 
     public void setTravelerCount(int travelerCount) {
@@ -56,7 +56,7 @@ public class Booking implements Serializable {
     }
 
     public int getCustomerId() {
-        return customerId;
+        return this.customerId;
     }
 
     public void setCustomerId(int customerId) {
@@ -64,7 +64,7 @@ public class Booking implements Serializable {
     }
 
     public String getTripTypeId() {
-        return tripTypeId;
+        return this.tripTypeId;
     }
 
     public void setTripTypeId(String tripTypeId) {
@@ -72,7 +72,7 @@ public class Booking implements Serializable {
     }
 
     public int getPackageId() {
-        return packageId;
+        return this.packageId;
     }
 
     public void setPackageId(int packageId) {

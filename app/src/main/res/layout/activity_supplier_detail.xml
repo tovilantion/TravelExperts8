@@ -181,7 +181,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnBooking2"
+        android:id="@+id/btnBookingSave"
         android:layout_width="282dp"
         android:layout_height="49dp"
         android:layout_marginStart="64dp"
