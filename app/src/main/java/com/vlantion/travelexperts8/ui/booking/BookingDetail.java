@@ -142,8 +142,7 @@ public class BookingDetail extends AppCompatActivity {
         }
     }
 
-    // so sa loob ng booking detail class gawa ka ng method
-    // make sure same name
+
     public void btnDeleteBookingClick(View v) {
         Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
     }
