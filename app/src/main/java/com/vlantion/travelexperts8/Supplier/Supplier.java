@@ -1,6 +1,8 @@
 package com.vlantion.travelexperts8.Supplier;
 
-public class Supplier {
+import java.io.Serializable;
+
+public class Supplier implements Serializable {
     private int supplierId;
     private String supName;
 

@@ -51,7 +51,7 @@ public class BookingFragment extends Fragment {
         myView = inflater.inflate(R.layout.fragment_booking, container, false);
         lvBookings = myView.findViewById(R.id.lvBookings);
 
-        new getBookings().execute("http://10.0.2.2:8080/Workshop(3)/rs/booking/getallbookings");
+        new getBookings().execute("http://10.0.2.2:8080/Workshop/rs/booking/getallbookings");
 
         bookingViewModel =
                 ViewModelProviders.of(this).get(BookingViewModel.class);
@@ -152,8 +152,9 @@ public class BookingFragment extends Fragment {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Intent intentBooking = new Intent(getActivity().getApplicationContext(), BookingDetail.class);
-                            startActivity(intentBooking);
                             intentBooking.putExtra("booking", (Booking) lvBookings.getAdapter().getItem(position));
+                            startActivity(intentBooking);
+
 
                         }
                     });

@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.vlantion.travelexperts8.Customer.Customer;
 import com.vlantion.travelexperts8.R;
+import com.vlantion.travelexperts8.ui.supplier.SupplierFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,9 +42,10 @@ public class CustomerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myViewCustomer = inflater.inflate(R.layout.fragment_customer, container, false);
-        lvCustomers = myViewCustomer.findViewById(R.id.lvSupplier);
+        lvCustomers = myViewCustomer.findViewById(R.id.lvCustomers);
 
-        new getCustomers().execute("http://10.0.2.2:8080/Workshop(3)/rs/customer/getallcustomers");
+        new getCustomers().execute("http://10.0.2.2:8080/Workshop/rs/customer/getallcustomers");
+
 
         customerViewModel =
                 ViewModelProviders.of(this).get(CustomerViewModel.class);

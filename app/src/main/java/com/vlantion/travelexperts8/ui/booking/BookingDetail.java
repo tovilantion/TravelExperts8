@@ -45,7 +45,7 @@ public class BookingDetail extends AppCompatActivity {
 
         booking = (Booking) getIntent().getSerializableExtra(("booking"));
 //        Log.d("id", booking.getBookingNo()+ "");
-        etBookingId.setText(booking.getBookingId());
+        etBookingId.setText(booking.getBookingId()+"");
         etBookingNo.setText(booking.getBookingNo());
         etTravelerCount.setText(booking.getTravelerCount());
         etCustomerId.setText(booking.getCustomerId());

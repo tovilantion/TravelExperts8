@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/etBookingId"
+            android:id="@+id/etSupplierId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -27,52 +27,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/etBookingDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingBottom="14dp"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/etBookingNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingBottom="14dp"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/etTravelerCount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingBottom="14dp"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/etCustomerId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingBottom="14dp"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/etTripTypeId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingBottom="14dp"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/etPackageId"
+            android:id="@+id/etSupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -95,84 +50,26 @@
         app:layout_constraintVertical_bias="0.282">
 
         <TextView
+            android:id="@+id/tvSupplierId"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginRight="40dp"
             android:layout_weight="1"
             android:gravity="right|center_vertical"
-            android:text="Booking Id"
+            android:text="Supplier Id"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="40dp" />
 
         <TextView
+            android:id="@+id/tvSupName"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginRight="40dp"
             android:layout_weight="1"
             android:gravity="right|center_vertical"
-            android:text="Booking Date"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:text="Booking No"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:text="Traveler Count"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:text="Customer Id"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:text="Trip Type Id"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="40dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:text="Package Id"
+            android:text="Supplier Name"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"

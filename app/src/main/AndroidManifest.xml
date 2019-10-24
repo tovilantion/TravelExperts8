@@ -36,6 +36,8 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <activity android:name=".ui.supplier.SupplierDetail"
+            android:parentActivityName=".ui.supplier.SupplierDetail"></activity>
     </application>
 
 </manifest>

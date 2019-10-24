@@ -27,10 +27,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -42,9 +44,12 @@ public class SupplierFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myViewSupplier = inflater.inflate(R.layout.fragment_supplier, container, false);
-        lvSuppliers = myViewSupplier.findViewById(R.id.lvSupplier);
+        lvSuppliers = myViewSupplier.findViewById(R.id.lvSuppliers);
 
-        new getSuppliers().execute("http://10.0.2.2:8080/Workshop/rs/suppliers/getallsuppliers");
+        new getSuppliers().execute("http://10.0.2.2:8080/Workshop/rs/supplier/getallsuppliers");
+
+        new putSupplier().execute("100", "test");
+
 
         supplierViewModel =
                 ViewModelProviders.of(this).get(SupplierViewModel.class);
@@ -60,7 +65,7 @@ public class SupplierFragment extends Fragment {
     }
 
     //HTTP GET METHOD REQUEST
-//http://10.0.2.2:8080/Workshop/rs/customer/getallcustomers
+//http://10.0.2.2:8080/Workshop/rs/supplier/getallsuppliers
 
     public class getSuppliers extends AsyncTask<String, Void, String> {
 
@@ -119,11 +124,11 @@ public class SupplierFragment extends Fragment {
             try {
                 ArrayList<Supplier> listdata = new ArrayList<Supplier>();
 
-                JSONArray customerJsonList = new JSONArray(result);
-                for (int i = 0; i < customerJsonList.length(); i++){
-                    JSONObject c = customerJsonList.getJSONObject(i);
+                JSONArray supplierJsonList = new JSONArray(result);
+                for (int i = 0; i < supplierJsonList.length(); i++){
+                    JSONObject c = supplierJsonList.getJSONObject(i);
                     int supplierId = c.getInt("supplierId");
-                    String supName = c.getString("supName");
+                    String supName = c.optString("supName"); //optional null value
 
 
                    Supplier supplier = new Supplier(supplierId, supName);
@@ -134,14 +139,13 @@ public class SupplierFragment extends Fragment {
                             new ArrayAdapter<Supplier>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, listdata);
 
                     lvSuppliers.setAdapter(itemsAdapter);
-                    //tvCustName.setText(listdata.get(0).getCustFirstName());
 
                     lvSuppliers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent = new Intent(getActivity().getApplicationContext(), SupplierDetail.class);
-                            intent.putExtra("supplier", (Customer) lvSuppliers.getAdapter().getItem(position));
-                            startActivity(intent);
+                            Intent intentSupplier = new Intent(getActivity().getApplicationContext(), SupplierDetail.class);
+                            intentSupplier.putExtra("supplier", (Supplier) lvSuppliers.getAdapter().getItem(position));
+                            startActivity(intentSupplier);
                         }
                     });
                 }
@@ -153,5 +157,65 @@ public class SupplierFragment extends Fragment {
             super.onPostExecute(result);
         }
     }
+
+    //HTTP PUT Method
+//http://10.0.2.2:8080/Workshop/rs/supplier/putsupplier
+
+    public class putSupplier extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPostExecute(String result){
+            //Do something after
+            Log.d("Result: ", result);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String status = "Fail";
+
+            try {
+
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/supplier/putsupplier");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("PUT");
+                conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+
+                JSONObject jsonParam = new JSONObject();
+                jsonParam.put("supplierId", Integer.valueOf(params[0]));
+                jsonParam.put("supName", params[1]);
+
+
+
+                Log.i("JSON", jsonParam.toString());
+                DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                os.writeBytes(jsonParam.toString());
+                os.flush();
+                os.close();
+                Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+                Log.i("MSG", conn.getResponseMessage());
+
+                if (conn.getResponseCode() == 200){
+                    status = "Success";
+                }else{
+                    status = "Fail";
+                }
+                conn.disconnect();
+            } catch (
+                    ProtocolException ex) {
+                ex.printStackTrace();
+            } catch (MalformedURLException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (JSONException ex) {
+                ex.printStackTrace();
+            }
+
+            return status;
+        }
+
+    }//end putSupplier
 
 }
