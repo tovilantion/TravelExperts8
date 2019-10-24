@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.booking.BookingDetail">
 
+    <Button
+        android:id="@+id/btnDeleteBooking"
+        android:layout_width="282dp"
+        android:layout_height="49dp"
+        android:onClick="btnDeleteBookingClick"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBookingSave"
+        app:layout_constraintVertical_bias="0.292" />
+
     <LinearLayout
         android:layout_width="115dp"
         android:layout_height="517dp"
@@ -181,16 +194,15 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnBooking2"
+        android:id="@+id/btnBookingSave"
         android:layout_width="282dp"
         android:layout_height="49dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="80dp"
         android:onClick="btnBookingSaveClick"
         android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

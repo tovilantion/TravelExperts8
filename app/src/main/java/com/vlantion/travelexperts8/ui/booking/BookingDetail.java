@@ -16,6 +16,7 @@ import com.vlantion.travelexperts8.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Console;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -45,13 +46,20 @@ public class BookingDetail extends AppCompatActivity {
 
         booking = (Booking) getIntent().getSerializableExtra(("booking"));
 //        Log.d("id", booking.getBookingNo()+ "");
-        etBookingId.setText(booking.getBookingId()+"");
-        etBookingNo.setText(booking.getBookingNo());
-        etTravelerCount.setText(booking.getTravelerCount());
-        etCustomerId.setText(booking.getCustomerId());
-        etTripTypeId.setText(booking.getTripTypeId());
-        etBookingDate.setText(booking.getBookingDate() + "");
-        etPackageId.setText(booking.getPackageId());
+        if(booking != null) {
+//            Toast.makeText(this, booking.getBookingId(), Toast.LENGTH_LONG).show();
+//                    Log.d("BOOKING", booking.toString());
+
+
+            etBookingId.setText(booking.getBookingId() + "");
+            etBookingNo.setText(booking.getBookingNo());
+            etTravelerCount.setText(booking.getTravelerCount() + "");
+            etCustomerId.setText(booking.getCustomerId() + "");
+            etTripTypeId.setText(booking.getTripTypeId());
+            etBookingDate.setText(booking.getBookingDate() + "");
+            etPackageId.setText(booking.getPackageId() + "");
+        }
+
 
     }// end on create
 
@@ -133,4 +141,9 @@ public class BookingDetail extends AppCompatActivity {
             return status;
         }
     }
-}
+
+
+    public void btnDeleteBookingClick(View v) {
+        Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
+    }
+} // end booking detail class

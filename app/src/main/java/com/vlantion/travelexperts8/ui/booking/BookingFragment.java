@@ -154,8 +154,6 @@ public class BookingFragment extends Fragment {
                             Intent intentBooking = new Intent(getActivity().getApplicationContext(), BookingDetail.class);
                             intentBooking.putExtra("booking", (Booking) lvBookings.getAdapter().getItem(position));
                             startActivity(intentBooking);
-
-
                         }
                     });
 

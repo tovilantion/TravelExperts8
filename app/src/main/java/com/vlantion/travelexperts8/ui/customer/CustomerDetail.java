@@ -48,19 +48,22 @@ public class CustomerDetail extends AppCompatActivity {
         etCustEmail = findViewById(R.id.etCustEmail);
         etAgentId = findViewById(R.id.etAgentId);
 
+
         customer = (Customer) getIntent().getSerializableExtra(("customer"));
-        etCustomerId.setText(customer.getCustomerId() + "");
-        etCustFirstName.setText(customer.getCustFirstName());
-        etCustLastName.setText(customer.getCustLastName());
-        etCustAddress.setText(customer.getCustAddress());
-        etCustCity.setText(customer.getCustCity());
-        etCustProv.setText(customer.getCustProv());
-        etCustPostal.setText(customer.getCustPostal());
-        etCustCountry.setText(customer.getCustCountry());
-        etCustHomePhone.setText(customer.getCustHomePhone());
-        etCustBusPhone.setText(customer.getCustBusPhone());
-        etCustEmail.setText(customer.getCustEmail());
-        etAgentId.setText(customer.getAgentId() + "");
+        if(customer != null) {
+            etCustomerId.setText(customer.getCustomerId() + "");
+            etCustFirstName.setText(customer.getCustFirstName());
+            etCustLastName.setText(customer.getCustLastName());
+            etCustAddress.setText(customer.getCustAddress());
+            etCustCity.setText(customer.getCustCity());
+            etCustProv.setText(customer.getCustProv());
+            etCustPostal.setText(customer.getCustPostal());
+            etCustCountry.setText(customer.getCustCountry());
+            etCustHomePhone.setText(customer.getCustHomePhone());
+            etCustBusPhone.setText(customer.getCustBusPhone());
+            etCustEmail.setText(customer.getCustEmail());
+            etAgentId.setText(customer.getAgentId() + "");
+        }
 
 
         /**
@@ -96,6 +99,12 @@ public class CustomerDetail extends AppCompatActivity {
         Toast.makeText(this, "Customer " + etCustomerId.getText().toString() + " updated", Toast.LENGTH_LONG).show();
     }
 
+
+    public void btnDeleteCustomerClick(View v){
+        new deleteCustomer().execute(etCustomerId.getText().toString());
+        Toast.makeText(this, "Deleted", Toast.LENGTH_LONG).show();
+
+    }
 
 
     //HTTP POST Method
@@ -183,7 +192,7 @@ public class CustomerDetail extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/customer/deletecustomer/" + params[0]); //param[0] is bookingId
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/customer/deletecustomer/" + params[0]); //param[0] is bookingId //TODO:  Integer.valueOf((params[0]) ,  params[0])
                 Log.d("URL:", url.toString());
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("DELETE");
@@ -212,8 +221,9 @@ public class CustomerDetail extends AppCompatActivity {
 
             return status;
         }
-    }//end deleteCustomer
 
+
+    }//end deleteCustomer
 }
 
 

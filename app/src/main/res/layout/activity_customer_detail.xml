@@ -7,6 +7,19 @@
     android:scrollbarStyle="outsideOverlay"
     tools:context=".ui.customer.CustomerDetail">
 
+    <Button
+        android:id="@+id/btnCustSave2"
+        android:layout_width="282dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:onClick="btnSaveClick"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <LinearLayout
         android:layout_width="186dp"
         android:layout_height="582dp"
@@ -307,16 +320,16 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnCustSave"
+        android:id="@+id/btnCustDelete"
         android:layout_width="282dp"
         android:layout_height="49dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
-        android:onClick="btnSaveClick"
-        android:text="Save"
+        android:layout_marginTop="12dp"
+        android:onClick="btnDeleteCustomerClick"
+        android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCustSave2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
