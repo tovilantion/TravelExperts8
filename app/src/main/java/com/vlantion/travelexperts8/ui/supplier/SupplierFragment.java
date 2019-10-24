@@ -64,10 +64,11 @@ public class SupplierFragment extends Fragment {
         return myViewSupplier;
     }
 
+
     //HTTP GET METHOD REQUEST
 //http://10.0.2.2:8080/Workshop/rs/supplier/getallsuppliers
 
-    public class getSuppliers extends AsyncTask<String, Void, String> {
+    public  class getSuppliers extends AsyncTask<String, Void, String> {
 
         public static final String REQUEST_METHOD = "GET";
         public static final int READ_TIMEOUT = 15000;

@@ -3,11 +3,19 @@ package com.vlantion.travelexperts8.ui.supplier;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.vlantion.travelexperts8.Customer.Customer;
 import com.vlantion.travelexperts8.R;
+import com.vlantion.travelexperts8.Supplier.Supplier;
+import com.vlantion.travelexperts8.ui.customer.CustomerDetail;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,15 +28,42 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class SupplierDetail extends AppCompatActivity {
+    EditText etSupplierId, etSupName;
+    Button btnSave, btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_detail);
 
+        etSupplierId = findViewById(R.id.etSupplierId);
+        etSupName = findViewById(R.id.etSupName);
+
+        Supplier supplier = (Supplier) getIntent().getSerializableExtra("supplier");
+        etSupplierId.setText(supplier.getSupplierId()+"");
+        etSupName.setText(supplier.getSupName());
+
 
 
     } // end oncreate
+
+
+    public void btnSupplierSaveClick(View v)
+    {
+        new SupplierDetail.postSupplier().execute(
+                etSupplierId.getText().toString(),
+                etSupName.getText().toString()
+        );
+
+
+
+    }
+
+    public void btnBookingDeleteClick(View view) {
+        new SupplierDetail.deleteSupplier().execute(etSupplierId.getText().toString());
+
+    }
+
 
     //HTTP POST Method
 //http://10.0.2.2:8080/Workshop/rs/supplier/postsupplier
@@ -47,7 +82,7 @@ public class SupplierDetail extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://10.0.2.2:8080/Workshop(3)/rs/supplier/postsupplier");
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/supplier/postsupplier");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -104,7 +139,7 @@ public class SupplierDetail extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/supplier/deletesupplier/" + params[0]); //param[0] is bookingId
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/supplier/deletesupplier/" + params[0]); //param[0] is supplierId
                 Log.d("URL:", url.toString());
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("DELETE");
