@@ -124,7 +124,7 @@ public class CustomerDetail extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("http://10.0.2.2:8080/Workshop(3)/rs/customer/postcustomer");
+                URL url = new URL("http://10.0.2.2:8080/Workshop/rs/customer/postcustomer");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
